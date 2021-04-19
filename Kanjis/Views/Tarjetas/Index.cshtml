@@ -13,8 +13,8 @@
 </select>
 
 <input type="text" id="search" />
-<button onclick="">Search</button>
+<button onclick="search()">Search</button>
 
 <ul id="ListadoTarjetas"></ul>
 
-<script src="~/Scripts/app/Kanjis.js"></script>
+<script src="~/Scripts/app/Kanjis.js?v=@DateTime.Now.Ticks.ToString()"></script>

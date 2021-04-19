@@ -1,0 +1,37 @@
+﻿[
+  {
+    "id": 1,
+    "significado": "Study",
+    "kanji": "勉強",
+    "lectura": "べんきょう",
+    "notas": ""
+  },
+  {
+    "id": 2,
+    "significado": "Movie",
+    "kanji": "映画",
+    "lectura": "えいが",
+    "notas": ""
+  },
+  {
+    "id": 3,
+    "significado": "Music",
+    "kanji": "音楽",
+    "lectura": "おんがく",
+    "notas": ""
+  },
+  {
+    "id": 4,
+    "significado": "Magazine",
+    "kanji": "雑誌",
+    "lectura": "ざっし",
+    "notas": ""
+  },
+  {
+    "id": 5,
+    "significado": "School",
+    "kanji": "学校",
+    "lectura": "がっこう",
+    "notas": ""
+  }
+]
