@@ -31,7 +31,7 @@ namespace BLL
             return transaction.consultTarjetaByWriting(writing);
         }
 
-        public Tarjeta GetTarjetaByKanji( string kanji)
+        public Tarjeta GetTarjetaByKanji(string kanji)
         {
             return transaction.consultTarjetaByKanji(kanji);
         }
@@ -39,6 +39,11 @@ namespace BLL
         public Tarjeta GetTarjetaById(int id)
         {
             return transaction.consultTarjetaById(id);
+        }
+
+        public Tarjeta GetTarjetaByAny(string element)
+        {
+            return transaction.consultTarjetaByAny(element);
         }
         #endregion
 

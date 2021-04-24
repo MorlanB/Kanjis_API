@@ -52,6 +52,27 @@ namespace DAL
             return consultAllTarjetas().Find(f => f.id == id);
         }
 
+        public Tarjeta consultTarjetaByAny(string element)
+        {
+            int id;
+            if (Int32.TryParse(element, out id))
+            {
+                return consultTarjetaById(id);
+            }
+            else if (consultAllTarjetas().Exists(f => f.significado.Contains(element)))
+            {
+                return consultAllTarjetas().Find(f => f.significado.Contains(element));
+            }
+            else if (consultAllTarjetas().Exists(f => f.lectura.Contains(element)))
+            {
+                return consultTarjetaByWriting(element);
+            }
+            else
+            {
+                return consultTarjetaByKanji(element);
+            }
+        }
+
         public Menu consultMenuFromTxt()
         {
             string text = System.IO.File.ReadAllText(@"C:\Users\aranz\source\repos\DAL\Data\MenuData.txt");

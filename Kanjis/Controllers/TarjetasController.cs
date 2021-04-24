@@ -17,7 +17,7 @@ namespace Kanjis.Controllers
         }
 
         [HttpGet]
-        public ActionResult getTarjetaByMeaning(string meaning = "")
+        public ActionResult getTarjetaByMeaning(string meaning/* = ""*/)
         {
             TarjetaBLL BLL = new TarjetaBLL();
             return Json(BLL.GetTarjetaByMeaning(meaning), JsonRequestBehavior.AllowGet);
@@ -42,6 +42,13 @@ namespace Kanjis.Controllers
         {
             TarjetaBLL BLL = new TarjetaBLL();
             return Json(BLL.GetTarjetaById(id), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult getTarjetaByAny(string any)
+        {
+            TarjetaBLL BLL = new TarjetaBLL();
+            return Json(BLL.GetTarjetaByAny(any), JsonRequestBehavior.AllowGet);
         }
 
 
