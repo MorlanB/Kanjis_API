@@ -26,22 +26,22 @@ namespace BLL
             return transaction.consultTarjetaByMeaning(meaning);
         }        
 
-        public Tarjeta GetTarjetaByWriting(string writing)
+        public List<Tarjeta> GetTarjetaByWriting(string writing)
         {
             return transaction.consultTarjetaByWriting(writing);
         }
 
-        public Tarjeta GetTarjetaByKanji(string kanji)
+        public List<Tarjeta> GetTarjetaByKanji(string kanji)
         {
             return transaction.consultTarjetaByKanji(kanji);
         }
 
-        public Tarjeta GetTarjetaById(int id)
+        public List<Tarjeta> GetTarjetaById(int id)
         {
             return transaction.consultTarjetaById(id);
         }
 
-        public Tarjeta GetTarjetaByAny(string element)
+        public List<Tarjeta> GetTarjetaByAny(string element)
         {
             return transaction.consultTarjetaByAny(element);
         }

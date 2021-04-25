@@ -37,46 +37,49 @@ namespace DAL
             return consultAllTarjetas().FindAll(f => f.significado.Contains(meaning));
         }
 
-        public Tarjeta consultTarjetaByWriting(string writing)
+        public List<Tarjeta> consultTarjetaByWriting(string writing)
         {
-            return consultAllTarjetas().Find(f => f.lectura.Contains(writing));
+            return consultAllTarjetas().FindAll(f => f.lectura.Contains(writing));
         }
 
-        public Tarjeta consultTarjetaByKanji(string kanji)
+        public List<Tarjeta> consultTarjetaByKanji(string kanji)
         {
-            return consultAllTarjetas().Find(f => f.kanji.Contains(kanji));
+            return consultAllTarjetas().FindAll(f => f.kanji.Contains(kanji));
         }
 
-        public Tarjeta consultTarjetaById(int id)
+        public List<Tarjeta> consultTarjetaById(int id)
         {
-            return consultAllTarjetas().Find(f => f.id == id);
+            return consultAllTarjetas().FindAll(f => f.id == id);
         }
 
-        public Tarjeta consultTarjetaByAny(string element)
+        public List<Tarjeta> consultTarjetaByAny(string element)
         {
             int id;
             if (Int32.TryParse(element, out id))
-            {
-                return consultTarjetaById(id);
-            }
-            else if (consultAllTarjetas().Exists(f => f.significado.Contains(element)))
-            {
-                return consultAllTarjetas().Find(f => f.significado.Contains(element));
-            }
-            else if (consultAllTarjetas().Exists(f => f.lectura.Contains(element)))
-            {
-                return consultTarjetaByWriting(element);
-            }
+            { return consultTarjetaById(id);}
+
             else
             {
-                return consultTarjetaByKanji(element);
+            return consultAllTarjetas().FindAll(f =>
+            f.significado.Contains(element)||
+            f.lectura.Contains(element)||
+            f.kanji.Contains(element)/*||
+            f.id == Int32.Parse(element)*/);
             }
         }
 
         public Menu consultMenuFromTxt()
         {
-            string text = System.IO.File.ReadAllText(@"C:\Users\aranz\source\repos\DAL\Data\MenuData.txt");
-            return new Menu(text);
+            try
+            {
+                string text = System.IO.File.ReadAllText(@"C:\Users\aranz\source\repos\DAL\Data\MenuData.txt");
+                return new Menu(text);
+            }
+            catch
+            {
+                return consultMenuFromJson();
+            }
+            
         }
 
         public Menu consultMenuFromJson()
