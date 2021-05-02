@@ -20,21 +20,21 @@ namespace Kanjis.Controllers
         public ActionResult getTarjetaByMeaning(string meaning/* = ""*/)
         {
             TarjetaBLL BLL = new TarjetaBLL();
-            return Json(BLL.GetTarjetaByMeaning(meaning), JsonRequestBehavior.AllowGet);
+            return Json(BLL.GetTarjetaByMeaning(meaning.ToLower()), JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
         public ActionResult getTarjetaByWriting(string writing)
         {
             TarjetaBLL BLL = new TarjetaBLL();
-            return Json(BLL.GetTarjetaByWriting(writing), JsonRequestBehavior.AllowGet);
+            return Json(BLL.GetTarjetaByWriting(writing.ToLower()), JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
         public ActionResult getTarjetaByKanji(string kanji)
         {
             TarjetaBLL BLL = new TarjetaBLL();
-            return Json(BLL.GetTarjetaByKanji(kanji), JsonRequestBehavior.AllowGet);
+            return Json(BLL.GetTarjetaByKanji(kanji.ToLower()), JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -48,7 +48,7 @@ namespace Kanjis.Controllers
         public ActionResult getTarjetaByAny(string any)
         {
             TarjetaBLL BLL = new TarjetaBLL();
-            return Json(BLL.GetTarjetaByAny(any), JsonRequestBehavior.AllowGet);
+            return Json(BLL.GetTarjetaByAny(any.ToLower()), JsonRequestBehavior.AllowGet);
         }
 
 

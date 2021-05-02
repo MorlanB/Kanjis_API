@@ -34,17 +34,17 @@ namespace DAL
 
         public List<Tarjeta> consultTarjetaByMeaning(string meaning)
         {
-            return consultAllTarjetas().FindAll(f => f.significado.Contains(meaning));
+            return consultAllTarjetas().FindAll(f => f.significado.ToLower().Contains(meaning));
         }
 
         public List<Tarjeta> consultTarjetaByWriting(string writing)
         {
-            return consultAllTarjetas().FindAll(f => f.lectura.Contains(writing));
+            return consultAllTarjetas().FindAll(f => f.lectura.ToLower().Contains(writing));
         }
 
         public List<Tarjeta> consultTarjetaByKanji(string kanji)
         {
-            return consultAllTarjetas().FindAll(f => f.kanji.Contains(kanji));
+            return consultAllTarjetas().FindAll(f => f.kanji.ToLower().Contains(kanji));
         }
 
         public List<Tarjeta> consultTarjetaById(int id)
@@ -54,18 +54,11 @@ namespace DAL
 
         public List<Tarjeta> consultTarjetaByAny(string element)
         {
-            int id;
-            if (Int32.TryParse(element, out id))
-            { return consultTarjetaById(id);}
-
-            else
-            {
             return consultAllTarjetas().FindAll(f =>
-            f.significado.Contains(element)||
-            f.lectura.Contains(element)||
-            f.kanji.Contains(element)/*||
-            f.id == Int32.Parse(element)*/);
-            }
+            f.significado.ToLower().Contains(element)||
+            f.lectura.ToLower().Contains(element)||
+            f.kanji.ToLower().Contains(element)||
+            f.id.ToString().Equals(element));
         }
 
         public Menu consultMenuFromTxt()
