@@ -68,11 +68,21 @@ namespace DAL
                 string text = System.IO.File.ReadAllText(@"C:\Users\aranz\source\repos\DAL\Data\MenuData.txt");
                 return new Menu(text);
             }
-            catch
+            catch (System.IO.FileNotFoundException ex)
             {
-                return consultMenuFromJson();
+                Console.WriteLine(ex.Message);
+                throw ex;
             }
-            
+            catch (System.IO.InvalidDataException ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw ex;
+            }
         }
 
         public Menu consultMenuFromJson()
@@ -92,7 +102,25 @@ namespace DAL
         #region utils
         private String readJson(string doc)
         {
-            return System.IO.File.ReadAllText(@String.Format("C:\\Users\\aranz\\source\\repos\\DAL\\Data\\{0}.json", doc));
+            try
+            {
+                return System.IO.File.ReadAllText(@String.Format("C:\\Users\\aranz\\source\\repos\\DAL\\Data\\{0}.json", doc));
+            }
+            catch (System.IO.FileNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw ex;
+            }
+            catch (System.IO.InvalidDataException ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw ex;
+            }
         }
         #endregion
 
