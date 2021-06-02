@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kanjis.Models;
 
 namespace Kanjis.Controllers
 {
@@ -13,36 +14,36 @@ namespace Kanjis.Controllers
         public ActionResult getTarjetas()
         {
             TarjetaBLL BLL = new TarjetaBLL();
-            return Json(BLL.GetAllTarjetas(), JsonRequestBehavior.AllowGet);
+            return Json(BLL.getAllTarjetas(), JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public ActionResult getTarjetaByMeaning(string meaning/* = ""*/)
-        {
-            TarjetaBLL BLL = new TarjetaBLL();
-            return Json(BLL.GetTarjetaByMeaning(meaning.ToLower()), JsonRequestBehavior.AllowGet);
-        }
+        //[HttpGet]
+        //public ActionResult getTarjetaByMeaning(string meaning)
+        //{
+        //    TarjetaBLL BLL = new TarjetaBLL();
+        //    return Json(BLL.GetTarjetaByMeaning(meaning.ToLower()), JsonRequestBehavior.AllowGet);
+        //}
 
-        [HttpGet]
-        public ActionResult getTarjetaByWriting(string writing)
-        {
-            TarjetaBLL BLL = new TarjetaBLL();
-            return Json(BLL.GetTarjetaByWriting(writing.ToLower()), JsonRequestBehavior.AllowGet);
-        }
+        //[HttpGet]
+        //public ActionResult getTarjetaByWriting(string writing)
+        //{
+        //    TarjetaBLL BLL = new TarjetaBLL();
+        //    return Json(BLL.GetTarjetaByWriting(writing.ToLower()), JsonRequestBehavior.AllowGet);
+        //}
 
-        [HttpGet]
-        public ActionResult getTarjetaByKanji(string kanji)
-        {
-            TarjetaBLL BLL = new TarjetaBLL();
-            return Json(BLL.GetTarjetaByKanji(kanji.ToLower()), JsonRequestBehavior.AllowGet);
-        }
+        //[HttpGet]
+        //public ActionResult getTarjetaByKanji(string kanji)
+        //{
+        //    TarjetaBLL BLL = new TarjetaBLL();
+        //    return Json(BLL.GetTarjetaByKanji(kanji.ToLower()), JsonRequestBehavior.AllowGet);
+        //}
 
-        [HttpGet]
-        public ActionResult getTarjetaById(int id)
-        {
-            TarjetaBLL BLL = new TarjetaBLL();
-            return Json(BLL.GetTarjetaById(id), JsonRequestBehavior.AllowGet);
-        }
+        //[HttpGet]
+        //public ActionResult getTarjetaById(int id)
+        //{
+        //    TarjetaBLL BLL = new TarjetaBLL();
+        //    return Json(BLL.GetTarjetaById(id), JsonRequestBehavior.AllowGet);
+        //}
 
         [HttpGet]
         public ActionResult getTarjetaByAny(string any)
@@ -64,26 +65,23 @@ namespace Kanjis.Controllers
             return View();
         }
 
-        // GET: Tarjetas/Create
-        public ActionResult Create()
+        // GET: Tarjetas/Nuevo
+        public ActionResult Nuevo()
         {
             return View();
         }
 
         // POST: Tarjetas/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(TarjetaForm tar)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+                TarjetaBLL BLL = new TarjetaBLL();
+            if (BLL.insertTarjeta(tar.kanji, tar.lectura, tar.significado, tar.notas, tar.diccionario))
+                ViewBag.Message = "Se ha guardado la tarjeta exitosamente.";
+            else
+                ViewBag.Message = "Error al guardar datos.";
+                
+            return RedirectToAction("Index");
         }
 
         // GET: Tarjetas/Edit/5

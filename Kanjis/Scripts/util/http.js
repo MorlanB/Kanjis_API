@@ -7,5 +7,17 @@
             .then(resp => resp.json()) //transform response into json
             .then(resp => onFinish(resp)) //do a action with response
             .catch(err => console.error(err)); //respuesta en caso de error
+    },
+
+    post: async (url, data) => {
+        const postForm = (body) => {
+            return fetch( url, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body
+            });
+        };
     }
 }

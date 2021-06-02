@@ -1,17 +1,11 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Tarjetas</h2>
-<select onchange="" id="searchType">
-    <option value="Meaning">Meaning</option>
-    <option value="Writing">Writing</option>
-    <option value="Kanji">Kanji</option>
-    <option value="Id">Id</option>
-    <option value="Any">Any</option>
-</select>
+
+<label>@ViewBag.Message</label>
 
 <input type="text" id="search" />
 <button onclick="search()">Search</button>

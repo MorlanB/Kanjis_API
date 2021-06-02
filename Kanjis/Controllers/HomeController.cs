@@ -31,7 +31,10 @@ namespace Kanjis.Controllers
         public ActionResult getMenu()
         {
             MenuBLL BLL = new MenuBLL();
-            return Json(BLL.getMenuJson(), JsonRequestBehavior.AllowGet);
+            //TarjetaBLL Cl = new TarjetaBLL();
+            //Cl.sqlQuery();
+            //return Json(BLL.getMenuJson(), JsonRequestBehavior.AllowGet);
+            return Json(BLL.getMenu(), JsonRequestBehavior.AllowGet);
         }
 
     }
