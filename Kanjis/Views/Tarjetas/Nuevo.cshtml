@@ -1,0 +1,53 @@
+﻿@model Kanjis.Models.TarjetaForm
+
+@{
+    ViewBag.Title = "Nuevo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>NewTarjeta</title>
+</head>
+
+<body>
+        @using (Html.BeginForm("Create", "Tarjetas", FormMethod.Post))
+        {
+            @Html.EditorForModel();
+            <input type="submit" value="Crear" />
+
+            @*<Table>
+                <tr>
+                    <td>@Html.Label("Id")</td>
+                    <td>@Html.TextBoxFor(m => m.id)</td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("Kanji")</td>
+                    <td>@Html.TextBoxFor(m => m.kanji)</td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("Lectura")</td>
+                    <td>@Html.TextBoxFor(m => m.lectura)</td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("Significao")</td>
+                    <td>@Html.TextBoxFor(m => m.significado)</td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("Notas")</td>
+                    <td>@Html.TextBoxFor(m => m.notas)</td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("Diccionario")</td>
+                    <td>@Html.TextBoxFor(m => m.diccionario)</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Crear" /></td>
+                </tr>
+            </Table>*@
+        }
+</body>
+</html>
+

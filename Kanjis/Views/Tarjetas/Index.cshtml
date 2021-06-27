@@ -1,20 +1,15 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Tarjetas</h2>
-<select onchange="" id="searchType">
-    <option value="Meaning">Meaning</option>
-    <option value="Writing">Writing</option>
-    <option value="Kanji">Kanji</option>
-    <option value="Id">Id</option>
-</select>
+
+<label>@ViewBag.Message</label>
 
 <input type="text" id="search" />
-<button onclick="">Search</button>
+<button onclick="search()">Search</button>
 
 <ul id="ListadoTarjetas"></ul>
 
-<script src="~/Scripts/app/Kanjis.js"></script>
+<script src="~/Scripts/app/Kanjis.js?v=@DateTime.Now.Ticks.ToString()"></script>

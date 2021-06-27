@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "Nombre": "Tarjetas",
+      "Url": "/Tarjetas/"
+    },
+    {
+      "Nombre": "Crear",
+      "Url": "/Tarjetas/Nuevo"
+    },
+    {
+      "Nombre": "Juego",
+      "Url": "/Tarjetas/Juego"
+    }
+  ]
+}

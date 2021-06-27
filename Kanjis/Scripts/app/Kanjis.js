@@ -21,10 +21,11 @@ function formatTarjetas(tarjetas) {
 }
 
 function search() {
-    let type = document.querySelector("#searchType").value;
+    let type = 'Any'; //document.querySelector("#searchType").value;
     let search = document.querySelector("#search").value;
-    http.get(`/Tarjetas/getTarjetasBy${type}`, { [type.toLowerCase()]: search }, resp => {
+    http.get(`/Tarjetas/getTarjetaByAny`, { [type.toLowerCase()]: search }, resp => {
         formatTarjetas(resp);
-    })}
+    });
+}
 
 getTarjetas();
